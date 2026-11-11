@@ -2,6 +2,8 @@ x-common-volumes: &common-volumes
   - ./config.toml:/MoneyPrinterTurbo/config.toml
   - ./storage:/MoneyPrinterTurbo/storage
   - ./resource:/MoneyPrinterTurbo/resource
+  - ./app:/MoneyPrinterTurbo/app
+  - ./webui:/MoneyPrinterTurbo/webui
 
 services:
   webui:
