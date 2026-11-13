@@ -1580,7 +1580,7 @@ def _apply_restored_params(params):
     )
     _set_stable_widget_value(
         f"video_aspect_for_{video_source}",
-        params.get("video_aspect") or VideoAspect.landscape.value,
+        params.get("video_aspect") or VideoAspect.portrait.value,
     )
     _set_stable_widget_value(
         "video_fit_mode_select",
@@ -6182,8 +6182,8 @@ def _render_video_settings(panel, params):
             )
 
             video_aspect_ratios = [
-                (tr("Landscape"), VideoAspect.landscape.value),
                 (tr("Portrait"), VideoAspect.portrait.value),
+                (tr("Landscape"), VideoAspect.landscape.value),
             ]
             if loomloom_video_capability is not None:
                 ratio_labels = {value: label for label, value in video_aspect_ratios}
@@ -6197,7 +6197,7 @@ def _render_video_settings(panel, params):
             #   - 其他 source 沿用 Portrait(index=0)
             #   - 用户在某 source 下手动改过 aspect,session_state 会记住,
             #     下次回到同一 source 时尊重用户选择,不会再被强制覆盖。
-            default_aspect_index = 0
+            default_aspect_index = 1 if params.video_source == "coverr" else 0
             video_aspect_values = [value for _, value in video_aspect_ratios]
             video_aspect_config_key = f"video_aspect_{params.video_source}"
             selected_aspect_ratio = stable_selectbox(

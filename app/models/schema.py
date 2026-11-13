@@ -97,7 +97,7 @@ class VideoParams(BaseModel):
     """
     {
       "video_subject": "",
-      "video_aspect": "横屏 16:9（西瓜视频）",
+      "video_aspect": "竖屏 9:16（抖音、快手、小红书）",
       "voice_name": "女生-晓晓",
       "bgm_name": "random",
       "font_name": "STHeitiMedium 黑体-中",
@@ -111,7 +111,7 @@ class VideoParams(BaseModel):
     video_subject: str
     video_script: str = ""  # Script used to generate the video
     video_terms: Optional[str | List[str]] = None  # Keywords used to generate the video
-    video_aspect: Optional[VideoAspect] = VideoAspect.landscape
+    video_aspect: Optional[VideoAspect] = VideoAspect.portrait
     video_fit_mode: VideoFitMode = VideoFitMode.cover
     image_motion: ImageMotion = ImageMotion.zoom
     video_concat_mode: Optional[VideoConcatMode] = VideoConcatMode.random
